@@ -119,7 +119,7 @@ APP.Main = (function () {
         commentsElement = storyDetails.querySelector('.js-comments');
         storyHeader = storyDetails.querySelector('.js-header');
         storyContent = storyDetails.querySelector('.js-content');
-        storyDetails.querySelector('.js-close').addEventListener('click', hideStory);
+        storyDetails.querySelector('.js-close').addEventListener('click', hideStoryCss);
 
         //var headerHeight = storyHeader.getBoundingClientRect().height;
         //storyContent.style.paddingTop = headerHeight + 'px';
@@ -162,21 +162,18 @@ APP.Main = (function () {
         requestAnimationFrame(function () {
             var headerHeight = storyHeader.getBoundingClientRect().height;
             storyContent.style.paddingTop = headerHeight + 'px';
-            setTimeout(showStory, 60);
+            setTimeout(showStoryCss, 60);
         });
     }
 
     function showStory() {
-        if (inDetails)
+        if (inDetails || !storyDetails)
             return;
 
         inDetails = true;
 
         var storyDetailsPosition = storyDetails.getBoundingClientRect();
         var left = 0, deltaLeft = storyDetailsPosition.left * 0.1;
-
-        if (!storyDetails)
-            return;
 
         document.body.classList.add('details-active');
         storyDetails.style.opacity = 1;
@@ -234,6 +231,26 @@ APP.Main = (function () {
         // it all tight. Or maybe we're doing visual changes
         // and they should be in a requestAnimationFrame
         requestAnimationFrame(animate);
+    }
+
+    function showStoryCss() {
+        if (inDetails || !storyDetails)
+            return;
+
+        inDetails = true;
+
+        document.body.classList.add('details-active');
+        storyDetails.classList.add('visible');
+    }
+
+    function hideStoryCss() {
+        if (!inDetails)
+            return;
+
+        inDetails = false;
+
+        document.body.classList.remove('details-active');
+        storyDetails.classList.remove('visible');
     }
 
     function getUpdateStack() {

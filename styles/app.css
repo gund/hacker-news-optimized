@@ -253,14 +253,23 @@ main.loading {
     0px 2px 7px 0px rgba(0, 0, 0, 0.10);
 
     overflow: hidden;
-    transition: opacity 0.3s ease-out;
+    transition: all 0.3s ease-out;
     will-change: transform;
+    -webkit-transform: translateX(0);
+    -moz-transform: translateX(0);
+    -ms-transform: translateX(0);
+    -o-transform: translateX(0);
+    transform: translateX(0);
 }
-/*
-.story-details * {
-    will-change: transform;
-    transform: translateZ(0);
-}*/
+
+.story-details.visible {
+    opacity: 1;
+    -webkit-transform: translateX(-100%);
+    -moz-transform: translateX(-100%);
+    -ms-transform: translateX(-100%);
+    -o-transform: translateX(-100%);
+    transform: translateX(-100%);
+}
 
 .story-details__content {
     -webkit-flex: 1;
