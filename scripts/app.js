@@ -327,11 +327,11 @@ APP.Main = (function () {
 
         // Check if we need to load the next batch of stories.
         var loadThreshold = (scrollHeight - offsetHeight - LAZY_LOAD_THRESHOLD);
-        if (scrollTop > loadThreshold)
-            loadStoryBatch();
 
         requestAnimationFrame(function () {
-            //header.style.height = (156 - scrollTopCapped) + 'px';
+            if (scrollTop > loadThreshold)
+                loadStoryBatch();
+
             header.style.transform = 'translateY(-' + scrollTopCapped + 'px)';
             headerTitles.style.webkitTransform = scaleString;
             headerTitles.style.transform = scaleString;
