@@ -1,5 +1,7 @@
 # Udacity 60fps Course Samples
 
+####Live Demo here: http://preview.16mb.com/hacker-news/
+
 **Please note: this code is intended for you to hone your debugging skills. It contains a lot of code that you should not use in production!**
 
 This is a simple web app that shows the top stories from [Hacker News](https://news.ycombinator.com/news) via [its API](http://blog.ycombinator.com/hacker-news-api).
